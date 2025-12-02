@@ -1,0 +1,7 @@
+{
+    "_base": "https://raw.githubusercontent.com/grough/strudel/main/",
+    "shepard": [
+        "samples/Shepard_120bpm_1bar.wav",
+        "samples/20250527 Pad Loop.wav"
+    ]
+}

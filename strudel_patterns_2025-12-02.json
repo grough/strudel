@@ -1,0 +1,20 @@
+{
+    "oSU_B3RrfpFt": {
+        "code": "// @title 20251201A\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n\nnote(\"<c3 bb2 f3 eb3>\")\n.sound(\"sawtooth\").lpf(10000)\n.adsr(\"1.0 : 1.0 : 0.5 : 5.0\")\n.room(2)\n.delay(0.5)\n.delaysync(1/8.1)\n.delayfeedback(0.8)\n",
+        "created_at": 1764635652499,
+        "id": "oSU_B3RrfpFt",
+        "collection": "user"
+    },
+    "_ryE-LrMKOsK": {
+        "code": "// @title 20251202A Ascending Sawtooth\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n// @details A first attempt to use continuous signals.\n\nconst rate = 32;\n\nseq(\"C3\").fast(rate)\n  .sound(\"sawtooth\")\n  .adsr(\"0.00 : 0.05 : 0.25 : 2.00\")\n  .freq(saw.range(110,880).segment(rate))\n  ",
+        "created_at": 1764689532482,
+        "id": "_ryE-LrMKOsK",
+        "collection": "user"
+    },
+    "jXAeU-8HpkAo": {
+        "code": "// @title 251202B Shepard Slices Reversed\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n// @details Play slices of a Shepard Tone sample in reverse order.\n\nsamples('http://127.0.0.1:8000/strudel.json')\n\n$: s(\"shepard:0\").slice(8, seq(\"0 1 2 3 4 5 6 7\").rev());\n",
+        "created_at": 1764703783154,
+        "id": "jXAeU-8HpkAo",
+        "collection": "user"
+    }
+}
