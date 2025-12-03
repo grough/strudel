@@ -1,0 +1,26 @@
+{
+    "Dru4XoxIfcMJ": {
+        "code": "// @title 251202C Slice Sequence\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n\nsamples('github:grough/strudel')\n\nsound(\"shepard:1\")\n  .slice(32,\n     seq(\"0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\").shuffle(8)\n  )\n  .adsr(\"0:0.10:0.0:1.00\")\n  .decay(\"[0.15 0.20 0.10]\")\n    // .shuffle(4)\n  .gain(\n    seq(\"[1.0 0.25 0.5]*9\")\n      // .shuffle(4)\n  )\n",
+        "created_at": 1764718215410,
+        "id": "Dru4XoxIfcMJ",
+        "collection": "user"
+    },
+    "oSU_B3RrfpFt": {
+        "code": "// @title 251201A Slow Attack Sawtooth\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n\nnote(\"<c3 bb2 f3 eb3>\")\n.sound(\"sawtooth\")\n.lpf(8000)\n.gain(0.5)\n.adsr(\"1.0 : 1.0 : 0.5 : 5.0\")\n.room(2)\n.delay(0.5)\n.delaysync(1/8.1)\n.delayfeedback(0.8)\n._spectrum()",
+        "created_at": 1764635652499,
+        "id": "oSU_B3RrfpFt",
+        "collection": "user"
+    },
+    "_ryE-LrMKOsK": {
+        "code": "// @title 251202A Ascending Sawtooth\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n// @details A first attempt to use continuous signals.\n\nconst rate = 32;\n\nseq(\"C3\").fast(rate)\n  .sound(\"sawtooth\")\n  .adsr(\"0.00 : 0.05 : 0.25 : 2.00\")\n  .freq(saw.range(110,880).segment(rate))\n  ",
+        "created_at": 1764689532482,
+        "id": "_ryE-LrMKOsK",
+        "collection": "user"
+    },
+    "t8CUhf332893": {
+        "code": "// @title 251202D\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n// @details …\n\nnote(\n  \"[c4]*16\"\n    .scale(\"C:pentatonic\")\n    .scaleTranspose(saw.range(-12, 12).fast(123.123))\n)\n  .clip(saw.range(0.0, 1.25).fast(1001))\n  .velocity(saw.range(0.0, 1.0).fast(123.6))\n  .decay(saw.range(0.05, 0.12).fast(686.6))\n  .sustain(0.1)\n  .release(saw.range(0.1, 2.0).fast(76.62))\n  .bpf(saw.range(250, 800).fast(276.62))\n  .bpq(saw.range(2, 10).fast(376.62))\n  .sound(\"sawtooth\")",
+        "created_at": 1764726049952,
+        "id": "t8CUhf332893",
+        "collection": "user"
+    }
+}
