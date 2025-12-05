@@ -1,6 +1,6 @@
 {
     "Dru4XoxIfcMJ": {
-        "code": "// @title 251202C Slice Sequence\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n\nsamples('github:grough/strudel')\n\nsound(\"shepard:1\")\n  .slice(32,\n     seq(\"0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\").shuffle(8)\n  )\n  .adsr(\"0:0.10:0.0:1.00\")\n  .decay(\"[0.15 0.20 0.10]\")\n    // .shuffle(4)\n  .gain(\n    seq(\"[1.0 0.25 0.5]*9\")\n      // .shuffle(4)\n  )\n",
+        "code": "// @title 251202C Slice Sequence\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n\nsamples('github:grough/strudel')\n\nsound(\"shepard:1\")\n  .slice(32,\n     seq(\"0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15\")\n       .shuffle(8)\n  )\n  .fast(1)\n  .adsr(\"0:0.10:0.25:0.50\")\n  .decay(\"[0.15 0.20 0.10]\")\n  .gain(\n    seq(\"[1.0 0.25 0.5]*9\")\n  )\n",
         "created_at": 1764718215410,
         "id": "Dru4XoxIfcMJ",
         "collection": "user"
@@ -18,9 +18,45 @@
         "collection": "user"
     },
     "t8CUhf332893": {
-        "code": "// @title 251202D\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n// @details …\n\nnote(\n  \"[c4]*16\"\n    .scale(\"C:pentatonic\")\n    .scaleTranspose(saw.range(-12, 12).fast(123.123))\n)\n  .clip(saw.range(0.0, 1.25).fast(1001))\n  .velocity(saw.range(0.0, 1.0).fast(123.6))\n  .decay(saw.range(0.05, 0.12).fast(686.6))\n  .sustain(0.1)\n  .release(saw.range(0.1, 2.0).fast(76.62))\n  .bpf(saw.range(250, 800).fast(276.62))\n  .bpq(saw.range(2, 10).fast(376.62))\n  .sound(\"sawtooth\")",
+        "code": "// @title 251202D Aliasing Sawtooth Sequence\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n\nnote(\n  \"[c4]*16\"\n    .scale(\"C:pentatonic\")\n    .scaleTranspose(saw.range(-12, 24).fast(123.123))\n)\n  .clip(saw.range(0.0, 1.25).fast(1001))\n  .velocity(saw.range(0.0, 1.0).fast(123.6))\n  .decay(saw.range(0.05, 0.12).fast(686.6))\n  .sustain(0.1)\n  .release(saw.range(0.1, 2.0).fast(76.62))\n  .bpf(saw.range(250, 800).fast(276.62))\n  .bpq(saw.range(2, 10).fast(376.62))\n  .sound(\"sawtooth\")\n  .postgain(2)\n",
         "created_at": 1764726049952,
         "id": "t8CUhf332893",
+        "collection": "user"
+    },
+    "a4ge0wb3XRRm": {
+        "code": "// @title 251203C TODO Soft Pad Synth\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n",
+        "created_at": 1764779198710,
+        "id": "a4ge0wb3XRRm",
+        "collection": "user"
+    },
+    "cWsNglXxi2OF": {
+        "code": "// @title 251203D Low Level Notes\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n\n// Will not produce events\n\"<c e g>\".log()\n\n// Concatenates note events\nnote(\"<c e g>\").log()\n\n// Expanded form of the above\ncat({note: 'c'},{note: 'e'},{note: 'g'}).log()\n\n// Chain the note param function onto the sequence\ncat('c', 'e', 'g').note().log()\n\n// The above is equivalent to…\nnote(cat('c', 'e', 'g')).log()\n\n// Plain values can be modified. The numbers have no meaning wihtout a param.\n\"50 60 70\".add(\"<0 1 2>\").log()\n\n// Specify which param should be modified inside the operator function\nnote(\"50 60 70\").room(.1).add(note(\"<0 1 2>\")).log()\n\nhush()",
+        "created_at": 1764782650032,
+        "id": "cWsNglXxi2OF",
+        "collection": "user"
+    },
+    "XOdnKE5vw07z": {
+        "code": "// @title 251203E Signal Example\n// @by Gavin Rough <https://grough.com>\n// @license CC BY-NC-SA 4.0\n\n// If you want to sequence a \"Signal\" like `rand` you have to `segment` it.\nconst rate = slider(5, 1, 8, 1);\nfreq(\n  rand.range(110, 440).segment(pow(2, rate))\n)\n.sound(\"sawtooth\").lpf(1500)\n",
+        "created_at": 1764783184952,
+        "id": "XOdnKE5vw07z",
+        "collection": "user"
+    },
+    "Msr-pUtQU032": {
+        "code": "// @title 251204B Richter Flat Source\n// @by Gavin Rough <https://grough.com>\n// @details Take 251204A and make the code more compact.\n\nsetcpm(87/4)\n\nn(\n  cat(\n  `\n  0  4  9  3 -1  4  8  2\n -3  3  6  2 -2  3  7  2\n  0  5  9  4 -1  3  8  4\n -3  2  6  1 -2  2  7  3\n  0  4  9  5  1  6  10 4\n  2  6 10  4  1  6  11 7\n  0  5  9  4  1  6  10 4\n  2  6 11  7 -1  3  8  4\n  `\n  .slow(16), \"~@4\")\n)\n.scale(\"Bb:minor\")\n.sound(\"piano\").lpf(250)\n",
+        "created_at": 1764864265328,
+        "id": "Msr-pUtQU032",
+        "collection": "user"
+    },
+    "_T1rxfEbNZCR": {
+        "code": "// @title 251204C Richter Chords\n// @by Gavin Rough <https://grough.com>\n// @details Like 251204A but encode the song as chords and arpeggiate them.\n\nsetcpm(85/4)\n\nn(\n  cat(\n  `\n  [ 0, 4, 9, 3] [-1, 4, 8, 2] [-3, 3, 6, 2] [-2, 3, 7, 2]\n  [ 0, 5, 9, 4] [-1, 3, 8, 4] [-3, 2, 6, 1] [-2, 2, 7, 3]\n  [ 0, 4, 9, 5] [ 1, 6,10, 4] [ 2, 6,10, 4] [ 1, 6,11, 7]\n  [ 0, 5, 9, 4] [ 1, 6,10, 4] [ 2, 6,11, 7] [-1, 3, 8, 4]\n  `\n  .slow(16), \"~!4\")\n)\n.scale(\"Bb:minor\")\n.arp(run(4).fast(1))\n.sound(\"piano\").lp(250).gain(1)\n",
+        "created_at": 1764874701408,
+        "id": "_T1rxfEbNZCR",
+        "collection": "user"
+    },
+    "NIVEEqAxR3bN": {
+        "code": "// @title 251204D\n// @by Gavin Rough <https://grough.com>\n// @details Cover of the song \"To The Lighthouse\"\nsetcpm(118/4)\n\nconst one = n(cat(`\n-2 -2 2 2 3 3 4 4 6 6 7 7 8 8 11 11\n`)).slow(2)\n.scale(\"D:minor\")\n.sound(\"piano\").lp(250).gain(1)\n\nconst twoRight = n(cat(`\n11 11 9 9 7 7 5 5 4 4 7 7 5 5 2 2\n`)).slow(2)\n.scale(\"C:minor\")\n.sound(\"piano\").lp(250).gain(1)\n\nconst twoLeft = n(cat(`\n2 2 -2 -2 0 0 -5 -5 -2 -2 0 0 -4 -4 _ _\n`)).slow(2)\n.scale(\"C:minor\")\n.sound(\"piano\").lp(250).gain(1)\n\nconst three = n(cat(`\n-8 -8 -4 -4 -3 -3 -1 -1 0 0 1 1 3 3 4 4\n`)).slow(2)\n.scale(\"A:minor\")\n.sound(\"piano\").lp(250).gain(1)\n\nconst four = n(cat(`\n-8 -8 -4 -4 -3 -3 -1 -1 0 0 -1 -1 1 1 -1 -1\n`)).slow(2)\n.scale(\"A:minor\")\n.sound(\"piano\").lp(250).gain(1)\n\narrange(\n  [8, one],\n  [8, stack(twoRight, twoLeft)],\n  [8, three],\n  [4, four],\n)\n",
+        "created_at": 1764893907998,
+        "id": "NIVEEqAxR3bN",
         "collection": "user"
     }
 }
